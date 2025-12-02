@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Özür Dilerim</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    font-family:Arial, sans-serif;
+    background:#ffeef2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+#box{
+    max-width:90%;
+}
+
+h1{
+    color:#ff4f7b;
+}
+
+#cute{
+    font-size:80px;
+}
+
+button{
+    padding:16px 26px;
+    margin:15px;
+    font-size:22px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+#yesBtn{
+    background:#ff4f7b;
+    color:white;
+    transition: 0.3s;
+}
+
+#noBtn{
+    background:#ddd;
+}
+
+.big-yes{
+    transform: scale(1.4);
+}
+
+#finalText{
+    display:none;
+    font-size:40px;
+    color:#ff2f6d;
+    padding:20px;
+    line-height:1.4;
+}
+
+/* Kalpler */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:26px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float{
+  0%   { transform:translateY(0);}
+  100% { transform:translateY(-120vh);}
+}
+</style>
+</head>
+<body>
+
+<div id="box">
+
+    <h1>Özür dilerim</h1>
+    <div id="cute">🌸🥺</div>
+
+    <div id="buttons">
+        <button id="noBtn">Hayır</button>
+        <button id="yesBtn">Evet</button>
+    </div>
+
+    <div id="finalText">
+        Aşkım özür dilerim 😔<br>
+        biliyorum ne desem boş ama<br>
+        böyle yapmamın sebebi galiba<br>
+        sana aşık oluyorum... 💗
+    </div>
+
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const finalText = document.getElementById("finalText");
+const buttons = document.getElementById("buttons");
+
+let size = 1;
+
+// Hayır tıklandıkça EVET büyür
+noBtn.onclick = () => {
+    size += 0.2;
+    yesBtn.style.transform = "scale(" + size + ")";
+}
+
+// Evet tıklanınca büyük mesaj çıkar
+yesBtn.onclick = () => {
+    buttons.style.display = "none";
+    finalText.style.display = "block";
+    startHearts();
+}
+
+// Kalp animasyonu
+function startHearts(){
+
+    setInterval(()=>{
+        let heart = document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.animationDuration = 2 + Math.random()*3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },4000);
+
+    },250);
+}
+</script>
+
+</body>
+</html>
